@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect, useRef, Fragment } from 'react';
 import Wordmark from './Wordmark.jsx';
 import { ROUTES, useHashRoute } from '../router.jsx';
 
@@ -6,12 +6,27 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const hash = useHashRoute();
+  const barRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const el = barRef.current;
+    if (!el) return;
+    const apply = () => {
+      const h = el.getBoundingClientRect().height;
+      document.documentElement.style.setProperty('--header-h', `${Math.round(h)}px`);
+    };
+    apply();
+    const ro = new ResizeObserver(apply);
+    ro.observe(el);
+    window.addEventListener('resize', apply);
+    return () => { ro.disconnect(); window.removeEventListener('resize', apply); };
   }, []);
 
   useEffect(() => { setOpen(false); }, [hash]);
@@ -38,14 +53,14 @@ export default function Header() {
       position: 'sticky', top: 0, zIndex: 30,
       transition: 'border-color 200ms ease'
     }}>
-      <div className="container" style={{
+      <div ref={barRef} className="container" style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingTop: 20, paddingBottom: 20,
         gap: 32
       }}>
-        <a href="#/" style={{ textDecoration: 'none' }}>
+        <a href="/" style={{ textDecoration: 'none' }} aria-label="Φροντιστήριο Φλωρόπουλος Καλλιθέα — Αρχική">
           <Wordmark size="sm" />
         </a>
 
@@ -114,7 +129,7 @@ export default function Header() {
                 );
               })}
             </ul>
-            <a href="#/epikoinonia"
+            <a href="/epikoinonia"
                className="btn btn--primary"
                style={{ marginTop: 20, width: '100%' }}>
               Κλείστε ραντεβού γνωριμίας

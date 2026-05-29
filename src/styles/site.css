@@ -292,3 +292,39 @@ main > * {
 /* Ensure images never overflow their column */
 img { max-width: 100%; height: auto; }
 
+/* ============================================================
+   Cookie banner, back-to-top, contact popup
+   ============================================================ */
+
+@keyframes flo-popup-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes flo-popup-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-popup__overlay,
+  .contact-popup__card { animation: none !important; }
+}
+
+.back-to-top:hover { background: var(--ink-700) !important; }
+.back-to-top:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+  .cookie-banner {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .cookie-banner .cookie-banner__actions {
+    justify-content: stretch;
+  }
+  .cookie-banner .cookie-banner__actions .btn {
+    flex: 1;
+  }
+}
+

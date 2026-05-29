@@ -1,16 +1,41 @@
 import React from 'react';
 import PageHero from '../components/PageHero.jsx';
 import Programs from '../components/Programs.jsx';
+import { useSeo } from '../seo/useSeo.js';
 
 export default function ProgramsPage() {
+  useSeo({
+    title: 'Τμήματα Προσανατολισμού · Φροντιστήριο Καλλιθέα Φλωρόπουλος',
+    description: 'Τμήματα Γ′ Γυμνασίου, Α′-Β′-Γ′ Λυκείου και αποφοίτων στην Καλλιθέα. Πλήρης κάλυψη Θετικών Σπουδών, Σπουδών Υγείας και Οικονομίας & Πληροφορικής για τις Πανελλαδικές.',
+    path: '/tmimata',
+    breadcrumbs: [
+      { name: 'Αρχική', path: '/' },
+      { name: 'Τμήματα', path: '/tmimata' }
+    ],
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: 'Τμήματα Προσανατολισμού — Φροντιστήριο Καλλιθέα',
+      description: 'Πλήρης κάλυψη και των τριών επιστημονικών πεδίων του Γενικού Λυκείου στο φροντιστήριο μας στην Καλλιθέα.',
+      inLanguage: 'el-GR',
+      isPartOf: { '@id': 'https://floropoulos.gr/#website' },
+      about: { '@id': 'https://floropoulos.gr/#organization' },
+      hasPart: [
+        { '@type': 'Course', name: 'Θετικών Σπουδών — Μαθηματικά, Φυσική, Χημεία', provider: { '@id': 'https://floropoulos.gr/#organization' }, inLanguage: 'el-GR' },
+        { '@type': 'Course', name: 'Σπουδών Υγείας — Βιολογία, Χημεία, Φυσική', provider: { '@id': 'https://floropoulos.gr/#organization' }, inLanguage: 'el-GR' },
+        { '@type': 'Course', name: 'Σπουδών Οικονομίας & Πληροφορικής — Μαθηματικά, ΑΟΘ, Πληροφορική', provider: { '@id': 'https://floropoulos.gr/#organization' }, inLanguage: 'el-GR' }
+      ]
+    }
+  });
+
   return (
     <>
       <PageHero
-        eyebrow="Ομάδες προσανατολισμού"
+        eyebrow="Ομάδες προσανατολισμού · Καλλιθέα"
         title={<>Σε τι <span style={{ fontStyle: 'italic' }}>προετοιμάζουμε.</span></>}
-        intro="Πλήρης κάλυψη και των τριών επιστημονικών πεδίων του Γενικού Λυκείου, με ιδιαίτερη παράδοση στις θετικές επιστήμες."
+        intro="Πλήρης κάλυψη και των τριών επιστημονικών πεδίων του Γενικού Λυκείου, με ιδιαίτερη παράδοση στις θετικές επιστήμες. Παρακολουθούμε τον μαθητή στην Καλλιθέα από τη Γ′ Γυμνασίου ως την τελευταία εβδομάδα προετοιμασίας — με συνέχεια ύλης, σταθερό προσωπικό και πλήρη γνώση της διαδρομής του."
         image="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1800&q=85"
-        imageAlt="Χημικός εξοπλισμός εργαστηρίου"
+        imageAlt="Χημικός εξοπλισμός — Τμήματα Σπουδών Υγείας στο Φροντιστήριο Καλλιθέα"
       />
 
       <Programs hideHeading />
@@ -80,8 +105,8 @@ export default function ProgramsPage() {
             Δείτε αναλυτικά τα μαθήματα κάθε πεδίου.
           </h2>
           <div style={{ display: 'inline-flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center', marginTop: 16 }}>
-            <a href="#/mathimata" className="btn btn--primary">Δείτε τα μαθήματα</a>
-            <a href="#/epikoinonia" className="btn btn--ghost">Επικοινωνία</a>
+            <a href="/mathimata" className="btn btn--primary">Δείτε τα μαθήματα</a>
+            <a href="/epikoinonia" className="btn btn--ghost">Επικοινωνία</a>
           </div>
         </div>
       </section>

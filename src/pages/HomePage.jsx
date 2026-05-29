@@ -1,19 +1,24 @@
 import React from 'react';
 import Extras from '../components/Extras.jsx';
+import { useSeo } from '../seo/useSeo.js';
 
 function HomeHero() {
   return (
     <section id="top" className="home-hero" style={{
       position: 'relative',
-      paddingTop: 'clamp(120px, 18vw, 220px)',
-      paddingBottom: 'clamp(120px, 18vw, 220px)',
+      paddingTop: 'clamp(24px, 3vw, 48px)',
+      paddingBottom: 'clamp(24px, 3vw, 48px)',
       background: 'var(--ink-900)',
       color: 'var(--paper)',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      minHeight: 'calc(100svh - var(--header-h, 80px))',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center'
     }}>
       <img
         src="https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1800&q=85"
-        alt="Πίνακας με μαθηματικούς τύπους"
+        alt="Φροντιστήριο Καλλιθέα Θ. Φλωρόπουλος — πίνακας με μαθηματικούς τύπους"
         loading="eager"
         style={{
           position: 'absolute',
@@ -40,22 +45,22 @@ function HomeHero() {
           textTransform: 'uppercase',
           color: 'var(--accent-soft)',
           fontWeight: 500,
-          marginBottom: 'clamp(28px, 4vw, 48px)',
+          marginBottom: 'clamp(16px, 2vw, 28px)',
           display: 'inline-flex',
           alignItems: 'center',
           gap: 16
         }}>
           <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
-          Καλλιθέα · Από το 1985
+          Καλλιθέα · 20 χρόνια επιτυχίες
         </div>
 
         <h1 className="h-hero" style={{
-          fontSize: 'clamp(44px, 7vw, 112px)',
+          fontSize: 'clamp(36px, 5.4vw, 84px)',
           fontWeight: 600,
           letterSpacing: '-0.035em',
-          lineHeight: 0.98,
+          lineHeight: 1.0,
           color: 'var(--paper)',
-          marginBottom: 'clamp(24px, 3.5vw, 40px)',
+          marginBottom: 'clamp(16px, 2.2vw, 28px)',
           maxWidth: '14ch'
         }}>
           Το φροντιστήριο{' '}
@@ -65,8 +70,8 @@ function HomeHero() {
 
         <p style={{
           fontFamily: 'var(--font-sans)',
-          fontSize: 'clamp(17px, 1.5vw, 20px)',
-          lineHeight: 1.65,
+          fontSize: 'clamp(14px, 1.2vw, 17px)',
+          lineHeight: 1.6,
           color: 'rgba(250, 247, 242, 0.82)',
           maxWidth: '52ch',
           margin: 0
@@ -79,17 +84,17 @@ function HomeHero() {
         <div style={{
           display: 'flex',
           gap: 12,
-          marginTop: 'clamp(32px, 5vw, 56px)',
+          marginTop: 'clamp(20px, 2.8vw, 36px)',
           flexWrap: 'wrap'
         }}>
-          <a href="#/epikoinonia" className="btn home-hero-cta" style={{
+          <a href="/epikoinonia" className="btn home-hero-cta" style={{
             background: 'var(--accent)',
             color: 'var(--ink-900)',
             borderColor: 'var(--accent)'
           }}>
             Κλείστε ραντεβού γνωριμίας
           </a>
-          <a href="#/methodos" className="btn home-hero-ghost" style={{
+          <a href="/methodos" className="btn home-hero-ghost" style={{
             background: 'transparent',
             color: 'var(--paper)',
             borderColor: 'var(--paper)'
@@ -104,10 +109,10 @@ function HomeHero() {
 
 function StatsBand() {
   const stats = [
-    { num: '40+', label: 'Χρόνια λειτουργίας', sub: 'Από το 1985' },
-    { num: '3',   label: 'Επιστημονικά πεδία', sub: 'Πλήρης κάλυψη' },
-    { num: '7',   label: 'Μαθήματα προσανατολισμού', sub: 'Από εξειδικευμένους καθηγητές' },
-    { num: '∞',   label: 'Εισαγωγές σε δημόσιες σχολές', sub: 'Δεκαετίες διαδρομών' }
+    { num: '40+', label: 'Χρόνια λειτουργίας', sub: 'Αδιάλειπτη παρουσία στην Καλλιθέα από το 1985' },
+    { num: '3',   label: 'Επιστημονικά πεδία', sub: 'Θετικών, Υγείας, Οικονομίας & Πληροφορικής' },
+    { num: '7',   label: 'Μαθήματα προσανατολισμού', sub: 'Κάθε μάθημα από καθηγητή με αποκλειστική ειδίκευση' },
+    { num: '∞',   label: 'Εισαγωγές σε δημόσιες σχολές', sub: 'Γενιές μαθητών σε ΑΕΙ και ΤΕΙ της επιλογής τους' }
   ];
 
   return (
@@ -354,9 +359,9 @@ function HomeMiniTeaser({ num, eyebrow, title, body, href }) {
 
 function HomeTeasers() {
   const minis = [
-    { num: '02', eyebrow: 'Η μέθοδος',  title: 'Πώς δουλεύουμε.',      body: 'Τέσσερις αρχές που διαμορφώνουν κάθε ώρα διδασκαλίας.', href: '#/methodos'  },
-    { num: '03', eyebrow: 'Τα τμήματα', title: 'Σε τι προετοιμάζουμε.',body: 'Πλήρης κάλυψη και των τριών επιστημονικών πεδίων.',    href: '#/tmimata'   },
-    { num: '04', eyebrow: 'Τα μαθήματα',title: 'Τι διδάσκουμε.',       body: 'Κάθε μάθημα από καθηγητή με αποκλειστική ειδίκευση.',  href: '#/mathimata' }
+    { num: '02', eyebrow: 'Η μέθοδος',  title: 'Πώς δουλεύουμε.',      body: 'Τέσσερις αρχές που διαμορφώνουν κάθε ώρα διδασκαλίας — από τη θεωρία ως το διαγώνισμα προσομοίωσης.', href: '/methodos'  },
+    { num: '03', eyebrow: 'Τα τμήματα', title: 'Σε τι προετοιμάζουμε.',body: 'Πλήρης κάλυψη και των τριών επιστημονικών πεδίων του Λυκείου, με τμήματα από τη Γ′ Γυμνασίου ως τους απόφοιτους.',    href: '/tmimata'   },
+    { num: '04', eyebrow: 'Τα μαθήματα',title: 'Τι διδάσκουμε.',       body: 'Κάθε μάθημα από καθηγητή με αποκλειστική ειδίκευση — όχι «γενικών καθηκόντων» εκπαιδευτικοί.',  href: '/mathimata' }
   ];
 
   return (
@@ -387,10 +392,10 @@ function HomeTeasers() {
         <HomeFeaturedTeaser
           eyebrow="01 — Το φροντιστήριο"
           title="Σοβαρή προετοιμασία, χωρίς θόρυβο."
-          body="Ολιγομελή τμήματα, σταθερή μεθοδολογία, προσωπική επαφή με κάθε μαθητή. Σαράντα χρόνια εμπειρίας μεταφράζονται σε δουλειά που φαίνεται."
-          href="#/frontistirio"
+          body="Ολιγομελή τμήματα, σταθερή μεθοδολογία, προσωπική επαφή με κάθε μαθητή. Σαράντα χρόνια εμπειρίας μεταφράζονται σε δουλειά που φαίνεται — και σε μαθητές που φτάνουν στις εξετάσεις προετοιμασμένοι, χωρίς άγχος της τελευταίας στιγμής."
+          href="/frontistirio"
           image="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=85"
-          alt="Χημικός εξοπλισμός εργαστηρίου"
+          alt="Φροντιστήριο Καλλιθέα — εργαστηριακός εξοπλισμός για τα τμήματα Θετικών & Υγείας"
         />
 
         <div className="home-mini-grid" style={{
@@ -428,8 +433,8 @@ function ResultsStory() {
             background: 'var(--paper)'
           }}>
             <img
-              src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=85"
-              alt="Σημειώσεις μαθηματικών και τύποι"
+              src="https://images.unsplash.com/photo-1635070041409-e63e783ce3c1?auto=format&fit=crop&w=1200&q=85"
+              alt="Τύποι μαθηματικών και φυσικής — επιτυχίες φροντιστηρίου στην Καλλιθέα"
               loading="lazy"
               style={{
                 width: '100%',
@@ -489,7 +494,8 @@ function ResultsStory() {
               Στα χρόνια λειτουργίας του φροντιστηρίου, εκατοντάδες μαθητές
               μας έχουν περάσει σε πανεπιστημιακές σχολές της επιλογής τους
               — με ιδιαίτερη παρουσία σε Πολυτεχνικές, Ιατρικές και Σχολές
-              Θετικών Επιστημών.
+              Θετικών Επιστημών. Η ιστορική δύναμη στα Μαθηματικά, τη Φυσική
+              και τη Χημεία παραμένει η ραχοκοκαλιά αυτών των διαδρομών.
             </p>
           </div>
         </div>
@@ -554,9 +560,11 @@ function HomeCTA() {
               marginBottom: 36
             }}>
               Ελάτε να γνωριστούμε και να συζητήσουμε την προετοιμασία
-              του παιδιού σας. Χωρίς δέσμευση, χωρίς πίεση.
+              του παιδιού σας. Στο ραντεβού γνωριμίας εκτιμάμε το επίπεδο,
+              σας παρουσιάζουμε τη μέθοδο και προτείνουμε το κατάλληλο
+              τμήμα. Χωρίς δέσμευση, χωρίς πίεση.
             </p>
-            <a href="#/epikoinonia" className="btn home-cta-btn" style={{
+            <a href="/epikoinonia" className="btn home-cta-btn" style={{
               background: 'var(--accent)',
               color: 'var(--ink-900)',
               borderColor: 'var(--accent)'
@@ -651,6 +659,23 @@ function HomeCTA() {
 }
 
 export default function HomePage() {
+  useSeo({
+    title: 'Φροντιστήριο Καλλιθέα · Θ. Φλωρόπουλος — Λύκειο & Πανελλαδικές από το 1985',
+    description: 'Φροντιστήριο στην Καλλιθέα από το 1985. Προετοιμασία Λυκείου, Πανελλαδικών και Γ′ Γυμνασίου με ολιγομελή τμήματα, έμπειρους καθηγητές και ισχυρή παράδοση στις θετικές επιστήμες. Ιφιγένειας 89, Καλλιθέα.',
+    path: '/',
+    breadcrumbs: [{ name: 'Αρχική', path: '/' }],
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: 'Φροντιστήριο Καλλιθέα · Θ. Φλωρόπουλος',
+      description: 'Φροντιστήριο Μέσης Εκπαίδευσης στην Καλλιθέα από το 1985 — Λύκειο, Πανελλαδικές, Γ′ Γυμνασίου.',
+      inLanguage: 'el-GR',
+      isPartOf: { '@id': 'https://floropoulos.gr/#website' },
+      about: { '@id': 'https://floropoulos.gr/#organization' },
+      primaryImageOfPage: { '@type': 'ImageObject', url: 'https://floropoulos.gr/og-image.jpg' }
+    }
+  });
+
   return (
     <>
       <HomeHero />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 
 function ContactInfo({ eyebrow, value, mono = false, href }) {
   const valStyle = {
@@ -21,41 +21,13 @@ function ContactInfo({ eyebrow, value, mono = false, href }) {
 }
 
 export default function Contact({ showHeading = true } = {}) {
-  const [submitted, setSubmitted] = useState(false);
-  const [errors, setErrors] = useState({});
-  const [values, setValues] = useState({ name: '', phone: '', level: '', note: '' });
-  const [, setTouched] = useState({});
-
-  const levels = [
-    'Γ′ Γυμνασίου',
-    'Α′ Λυκείου',
-    'Β′ Λυκείου',
-    'Γ′ Λυκείου',
-    'Απόφοιτος'
-  ];
-
-  function update(key, val) {
-    setValues(v => ({ ...v, [key]: val }));
-    if (errors[key]) {
-      setErrors(e => { const n = { ...e }; delete n[key]; return n; });
-    }
-  }
-
-  function onSubmit(e) {
-    e.preventDefault();
-    const errs = {};
-    if (!values.name.trim())  errs.name  = 'Παρακαλούμε συμπληρώστε το ονοματεπώνυμό σας.';
-    if (!values.phone.trim()) errs.phone = 'Παρακαλούμε συμπληρώστε ένα τηλέφωνο επικοινωνίας.';
-    if (!values.level)        errs.level = 'Επιλέξτε την τάξη του μαθητή.';
-    setTouched({ name: true, phone: true, level: true });
-    if (Object.keys(errs).length) { setErrors(errs); return; }
-    setErrors({});
-    setSubmitted(true);
-  }
-
-  function fieldClass(name) {
-    return `field ${errors[name] ? 'field--error' : ''}`;
-  }
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (window.Tally) { window.Tally.loadEmbeds(); return; }
+    document.querySelectorAll('iframe[data-tally-src]:not([src])').forEach((el) => {
+      el.src = el.dataset.tallySrc;
+    });
+  }, []);
 
   return (
     <section id="contact">
@@ -105,113 +77,51 @@ export default function Contact({ showHeading = true } = {}) {
               <ContactInfo eyebrow="Τηλέφωνο"  value="210 9563911" mono href="tel:+302109563911" />
               <ContactInfo eyebrow="Κινητό"    value="697 7990840" mono href="tel:+306977990840" />
               <ContactInfo eyebrow="Email"     value="aflo55@otenet.gr" href="mailto:aflo55@otenet.gr" />
-              <ContactInfo eyebrow="Διεύθυνση" value={<span>Ιφιγένειας 89<br />Καλλιθέα</span>} />
+              <ContactInfo
+                eyebrow="Διεύθυνση"
+                value={<span>Ιφιγένειας 89<br />Καλλιθέα</span>}
+                href="https://maps.app.goo.gl/NJfHMiaTbVzqzBbi6"
+              />
+
+              <div className="contact-map" style={{
+                marginTop: 8,
+                border: '1px solid var(--ink-900)',
+                borderRadius: 4,
+                overflow: 'hidden',
+                aspectRatio: '4 / 3'
+              }}>
+                <a
+                  href="https://maps.app.goo.gl/NJfHMiaTbVzqzBbi6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Άνοιγμα διεύθυνσης στο Google Maps"
+                  style={{ display: 'block', width: '100%', height: '100%' }}
+                >
+                  <iframe
+                    title="Χάρτης — Ιφιγένειας 89, Καλλιθέα"
+                    src="https://www.google.com/maps?q=%CE%99%CF%86%CE%B9%CE%B3%CE%B5%CE%BD%CE%B5%CE%AF%CE%B1%CF%82%2089%2C%20%CE%9A%CE%B1%CE%BB%CE%BB%CE%B9%CE%B8%CE%AD%CE%B1&output=embed"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0, display: 'block', pointerEvents: 'none' }}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </a>
+              </div>
             </div>
           </div>
 
           <div className="contact-form" style={{ gridColumn: '7 / span 6' }}>
-            {submitted ? (
-              <div style={{
-                padding: 40,
-                border: '1px solid var(--ink-900)',
-                borderRadius: 4,
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 12
-              }}>
-                <div className="eyebrow" style={{ color: 'var(--success)' }}>Στάλθηκε</div>
-                <div style={{
-                  fontFamily: 'var(--font-serif)',
-                  fontSize: 32,
-                  fontWeight: 500,
-                  color: 'var(--ink-900)',
-                  lineHeight: 1.2,
-                  letterSpacing: '-0.01em'
-                }}>
-                  Ευχαριστούμε.
-                </div>
-                <p style={{ color: 'var(--ink-500)', margin: 0, fontSize: 16, lineHeight: 1.7 }}>
-                  Θα επικοινωνήσουμε μαζί σας εντός μίας εργάσιμης ημέρας.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={onSubmit} noValidate style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
-                <div className={fieldClass('name')}>
-                  <label className="field-label" htmlFor="cf-name">Ονοματεπώνυμο</label>
-                  <input id="cf-name" className="input"
-                         placeholder="Πώς να σας αποκαλούμε"
-                         value={values.name}
-                         onChange={e => update('name', e.target.value)}
-                         style={errors.name ? { borderBottomColor: 'var(--error)' } : null} />
-                  {errors.name && (
-                    <div className="field-help" style={{ color: 'var(--error)' }}>{errors.name}</div>
-                  )}
-                </div>
-
-                <div className={fieldClass('phone')}>
-                  <label className="field-label" htmlFor="cf-phone">Τηλέφωνο</label>
-                  <input id="cf-phone" className="input" inputMode="tel"
-                         placeholder="Για να επικοινωνήσουμε μαζί σας"
-                         value={values.phone}
-                         onChange={e => update('phone', e.target.value)}
-                         style={errors.phone ? { borderBottomColor: 'var(--error)' } : null} />
-                  {errors.phone && (
-                    <div className="field-help" style={{ color: 'var(--error)' }}>{errors.phone}</div>
-                  )}
-                </div>
-
-                <div className={fieldClass('level')}>
-                  <label className="field-label" htmlFor="cf-level">Τάξη</label>
-                  <div style={{ position: 'relative' }}>
-                    <select id="cf-level"
-                            className="input"
-                            value={values.level}
-                            onChange={e => update('level', e.target.value)}
-                            style={{
-                              appearance: 'none',
-                              WebkitAppearance: 'none',
-                              paddingRight: 28,
-                              color: values.level ? 'var(--ink-900)' : 'var(--ink-300)',
-                              cursor: 'pointer',
-                              ...(errors.level ? { borderBottomColor: 'var(--error)' } : null)
-                            }}>
-                      <option value="" disabled>Επιλέξτε τάξη</option>
-                      {levels.map(l => <option key={l} value={l}>{l}</option>)}
-                    </select>
-                    <svg width="12" height="8" viewBox="0 0 12 8" fill="none"
-                         stroke="var(--ink-900)" strokeWidth="1.5"
-                         style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }}>
-                      <polyline points="1,1.5 6,6.5 11,1.5" />
-                    </svg>
-                  </div>
-                  {errors.level && (
-                    <div className="field-help" style={{ color: 'var(--error)' }}>{errors.level}</div>
-                  )}
-                </div>
-
-                <div className="field">
-                  <label className="field-label" htmlFor="cf-note">Μήνυμα <span style={{ color: 'var(--ink-300)' }}>(προαιρετικό)</span></label>
-                  <textarea id="cf-note" className="input" rows="3"
-                            placeholder="Πείτε μας τι θα θέλατε να συζητήσουμε"
-                            style={{ resize: 'vertical' }}
-                            value={values.note}
-                            onChange={e => update('note', e.target.value)} />
-                </div>
-
-                <div style={{ marginTop: 8 }}>
-                  <button type="submit" className="btn btn--primary">Αποστολή αιτήματος</button>
-                  <div style={{
-                    marginTop: 16,
-                    fontFamily: 'var(--font-sans)',
-                    fontSize: 13,
-                    color: 'var(--ink-500)',
-                    lineHeight: 1.5
-                  }}>
-                    Θα επικοινωνήσουμε μαζί σας εντός μίας εργάσιμης ημέρας.
-                  </div>
-                </div>
-              </form>
-            )}
+            <iframe
+              data-tally-src="https://tally.so/embed/ZjDaEv?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+              loading="lazy"
+              width="100%"
+              height="588"
+              frameBorder="0"
+              marginHeight="0"
+              marginWidth="0"
+              title="Επικοινωνία"
+            />
           </div>
         </div>
       </div>

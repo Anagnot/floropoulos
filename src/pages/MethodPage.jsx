@@ -1,16 +1,37 @@
 import React from 'react';
 import PageHero from '../components/PageHero.jsx';
 import Method from '../components/Method.jsx';
+import { useSeo } from '../seo/useSeo.js';
 
 export default function MethodPage() {
+  useSeo({
+    title: 'Μέθοδος Διδασκαλίας · Φροντιστήριο Καλλιθέα Φλωρόπουλος',
+    description: 'Η μέθοδος διδασκαλίας του φροντιστηρίου μας στην Καλλιθέα: θεωρία με βάθος, στοχευμένη άσκηση, τρίωρα διαγωνίσματα προσομοίωσης και τακτική επαφή με γονείς. Πανελλαδικές χωρίς εκπλήξεις.',
+    path: '/methodos',
+    breadcrumbs: [
+      { name: 'Αρχική', path: '/' },
+      { name: 'Μέθοδος', path: '/methodos' }
+    ],
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: 'Η Μέθοδος Διδασκαλίας στο Φροντιστήριο Καλλιθέα Φλωρόπουλος',
+      description: 'Τέσσερις αρχές που διαμορφώνουν κάθε ώρα διδασκαλίας στο φροντιστήριο μας στην Καλλιθέα.',
+      inLanguage: 'el-GR',
+      author: { '@id': 'https://floropoulos.gr/#organization' },
+      publisher: { '@id': 'https://floropoulos.gr/#organization' },
+      isPartOf: { '@id': 'https://floropoulos.gr/#website' }
+    }
+  });
+
   return (
     <>
       <PageHero
-        eyebrow="Η μέθοδος μας"
+        eyebrow="Η μέθοδος μας · Καλλιθέα"
         title={<>Πώς <span style={{ fontStyle: 'italic' }}>δουλεύουμε.</span></>}
-        intro="Τέσσερις αρχές που διαμορφώνουν κάθε ώρα διδασκαλίας. Αυτό δεν αλλάζει με τις μόδες."
+        intro="Τέσσερις αρχές που διαμορφώνουν κάθε ώρα διδασκαλίας στο φροντιστήριό μας στην Καλλιθέα. Αυτό δεν αλλάζει με τις μόδες."
         image="https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1800&q=85"
-        imageAlt="Πίνακας με μαθηματικούς τύπους"
+        imageAlt="Πίνακας με μαθηματικούς τύπους — Μέθοδος Φροντιστηρίου Καλλιθέα Φλωρόπουλος"
       />
 
       <Method hideHeading />
@@ -64,7 +85,9 @@ export default function MethodPage() {
               }}>
                 Ο μαθητής δεν χρειάζεται να εικάζει πού βρίσκεται. Τα τρίωρα
                 διαγωνίσματα προσομοίωσης δίνουν αξιόπιστη εικόνα κάθε στιγμή
-                της χρονιάς.
+                της χρονιάς — βαθμολογία, σύγκριση με τη βάση επιτυχίας
+                και χαρτογράφηση των αδυναμιών που πρέπει να καλυφθούν
+                πριν τις Πανελλαδικές.
               </p>
             </div>
           </div>
@@ -85,8 +108,8 @@ export default function MethodPage() {
             Θέλετε να δούμε μαζί την προετοιμασία του παιδιού σας;
           </h2>
           <div style={{ display: 'inline-flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center', marginTop: 16 }}>
-            <a href="#/epikoinonia" className="btn btn--primary">Κλείστε ραντεβού γνωριμίας</a>
-            <a href="#/tmimata" className="btn btn--ghost">Δείτε τα τμήματα</a>
+            <a href="/epikoinonia" className="btn btn--primary">Κλείστε ραντεβού γνωριμίας</a>
+            <a href="/tmimata" className="btn btn--ghost">Δείτε τα τμήματα</a>
           </div>
         </div>
       </section>

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Block crawler-unfriendly internals
+Disallow: /api/
+
+Sitemap: https://floropoulos.gr/sitemap.xml

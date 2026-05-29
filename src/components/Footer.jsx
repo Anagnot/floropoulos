@@ -21,7 +21,7 @@ export default function Footer() {
           marginBottom: 56
         }}>
           <div>
-            <a href="#/" style={{ textDecoration: 'none', display: 'inline-block' }}>
+            <a href="/" style={{ textDecoration: 'none', display: 'inline-block' }}>
               <Wordmark size="sm" showSubline={false} />
             </a>
             <div style={{
