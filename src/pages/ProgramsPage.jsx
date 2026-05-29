@@ -18,12 +18,12 @@ export default function ProgramsPage() {
       name: 'Τμήματα Προσανατολισμού — Φροντιστήριο Καλλιθέα',
       description: 'Πλήρης κάλυψη και των τριών επιστημονικών πεδίων του Γενικού Λυκείου στο φροντιστήριο μας στην Καλλιθέα.',
       inLanguage: 'el-GR',
-      isPartOf: { '@id': 'https://floropoulos.gr/#website' },
-      about: { '@id': 'https://floropoulos.gr/#organization' },
+      isPartOf: { '@id': 'https://floropoulosedu.gr/#website' },
+      about: { '@id': 'https://floropoulosedu.gr/#organization' },
       hasPart: [
-        { '@type': 'Course', name: 'Θετικών Σπουδών — Μαθηματικά, Φυσική, Χημεία', provider: { '@id': 'https://floropoulos.gr/#organization' }, inLanguage: 'el-GR' },
-        { '@type': 'Course', name: 'Σπουδών Υγείας — Βιολογία, Χημεία, Φυσική', provider: { '@id': 'https://floropoulos.gr/#organization' }, inLanguage: 'el-GR' },
-        { '@type': 'Course', name: 'Σπουδών Οικονομίας & Πληροφορικής — Μαθηματικά, ΑΟΘ, Πληροφορική', provider: { '@id': 'https://floropoulos.gr/#organization' }, inLanguage: 'el-GR' }
+        { '@type': 'Course', name: 'Θετικών Σπουδών — Μαθηματικά, Φυσική, Χημεία', provider: { '@id': 'https://floropoulosedu.gr/#organization' }, inLanguage: 'el-GR' },
+        { '@type': 'Course', name: 'Σπουδών Υγείας — Βιολογία, Χημεία, Φυσική', provider: { '@id': 'https://floropoulosedu.gr/#organization' }, inLanguage: 'el-GR' },
+        { '@type': 'Course', name: 'Σπουδών Οικονομίας & Πληροφορικής — Μαθηματικά, ΑΟΘ, Πληροφορική', provider: { '@id': 'https://floropoulosedu.gr/#organization' }, inLanguage: 'el-GR' }
       ]
     }
   });

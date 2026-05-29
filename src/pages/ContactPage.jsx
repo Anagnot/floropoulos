@@ -18,10 +18,10 @@ export default function ContactPage() {
       name: 'Επικοινωνία — Φροντιστήριο Καλλιθέα Φλωρόπουλος',
       description: 'Στοιχεία επικοινωνίας και φόρμα γνωριμίας για το φροντιστήριο μας στην Καλλιθέα.',
       inLanguage: 'el-GR',
-      isPartOf: { '@id': 'https://floropoulos.gr/#website' },
-      about: { '@id': 'https://floropoulos.gr/#organization' },
+      isPartOf: { '@id': 'https://floropoulosedu.gr/#website' },
+      about: { '@id': 'https://floropoulosedu.gr/#organization' },
       mainEntity: {
-        '@id': 'https://floropoulos.gr/#organization'
+        '@id': 'https://floropoulosedu.gr/#organization'
       }
     }
   });

@@ -18,9 +18,9 @@ export default function MethodPage() {
       headline: 'Η Μέθοδος Διδασκαλίας στο Φροντιστήριο Καλλιθέα Φλωρόπουλος',
       description: 'Τέσσερις αρχές που διαμορφώνουν κάθε ώρα διδασκαλίας στο φροντιστήριο μας στην Καλλιθέα.',
       inLanguage: 'el-GR',
-      author: { '@id': 'https://floropoulos.gr/#organization' },
-      publisher: { '@id': 'https://floropoulos.gr/#organization' },
-      isPartOf: { '@id': 'https://floropoulos.gr/#website' }
+      author: { '@id': 'https://floropoulosedu.gr/#organization' },
+      publisher: { '@id': 'https://floropoulosedu.gr/#organization' },
+      isPartOf: { '@id': 'https://floropoulosedu.gr/#website' }
     }
   });
 

@@ -2,40 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://floropoulos.gr/</loc>
+    <loc>https://floropoulosedu.gr/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.00</priority>
-    <xhtml:link rel="alternate" hreflang="el-gr" href="https://floropoulos.gr/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://floropoulos.gr/"/>
+    <xhtml:link rel="alternate" hreflang="el-gr" href="https://floropoulosedu.gr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://floropoulosedu.gr/"/>
   </url>
   <url>
-    <loc>https://floropoulos.gr/frontistirio</loc>
+    <loc>https://floropoulosedu.gr/frontistirio</loc>
     <changefreq>monthly</changefreq>
     <priority>0.90</priority>
-    <xhtml:link rel="alternate" hreflang="el-gr" href="https://floropoulos.gr/frontistirio"/>
+    <xhtml:link rel="alternate" hreflang="el-gr" href="https://floropoulosedu.gr/frontistirio"/>
   </url>
   <url>
-    <loc>https://floropoulos.gr/methodos</loc>
+    <loc>https://floropoulosedu.gr/methodos</loc>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
-    <xhtml:link rel="alternate" hreflang="el-gr" href="https://floropoulos.gr/methodos"/>
+    <xhtml:link rel="alternate" hreflang="el-gr" href="https://floropoulosedu.gr/methodos"/>
   </url>
   <url>
-    <loc>https://floropoulos.gr/tmimata</loc>
+    <loc>https://floropoulosedu.gr/tmimata</loc>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
-    <xhtml:link rel="alternate" hreflang="el-gr" href="https://floropoulos.gr/tmimata"/>
+    <xhtml:link rel="alternate" hreflang="el-gr" href="https://floropoulosedu.gr/tmimata"/>
   </url>
   <url>
-    <loc>https://floropoulos.gr/mathimata</loc>
+    <loc>https://floropoulosedu.gr/mathimata</loc>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
-    <xhtml:link rel="alternate" hreflang="el-gr" href="https://floropoulos.gr/mathimata"/>
+    <xhtml:link rel="alternate" hreflang="el-gr" href="https://floropoulosedu.gr/mathimata"/>
   </url>
   <url>
-    <loc>https://floropoulos.gr/epikoinonia</loc>
+    <loc>https://floropoulosedu.gr/epikoinonia</loc>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
-    <xhtml:link rel="alternate" hreflang="el-gr" href="https://floropoulos.gr/epikoinonia"/>
+    <xhtml:link rel="alternate" hreflang="el-gr" href="https://floropoulosedu.gr/epikoinonia"/>
   </url>
 </urlset>

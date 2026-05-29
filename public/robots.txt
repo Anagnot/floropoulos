@@ -4,4 +4,4 @@ Allow: /
 # Block crawler-unfriendly internals
 Disallow: /api/
 
-Sitemap: https://floropoulos.gr/sitemap.xml
+Sitemap: https://floropoulosedu.gr/sitemap.xml

@@ -18,8 +18,8 @@ export default function FrontistirioPage() {
       name: 'Το Φροντιστήριο μας — Καλλιθέα',
       description: 'Παρουσίαση του φροντιστηρίου Θ. Φλωρόπουλος στην Καλλιθέα: ταυτότητα, αξίες και προσέγγιση.',
       inLanguage: 'el-GR',
-      isPartOf: { '@id': 'https://floropoulos.gr/#website' },
-      about: { '@id': 'https://floropoulos.gr/#organization' }
+      isPartOf: { '@id': 'https://floropoulosedu.gr/#website' },
+      about: { '@id': 'https://floropoulosedu.gr/#organization' }
     }
   });
 

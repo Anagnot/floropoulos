@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export const SITE_ORIGIN = 'https://floropoulos.gr';
+export const SITE_ORIGIN = 'https://floropoulosedu.gr';
 export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image.jpg`;
 
 function setMeta(selector, attr, value) {

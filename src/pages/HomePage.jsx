@@ -670,9 +670,9 @@ export default function HomePage() {
       name: 'Φροντιστήριο Καλλιθέα · Θ. Φλωρόπουλος',
       description: 'Φροντιστήριο Μέσης Εκπαίδευσης στην Καλλιθέα από το 1985 — Λύκειο, Πανελλαδικές, Γ′ Γυμνασίου.',
       inLanguage: 'el-GR',
-      isPartOf: { '@id': 'https://floropoulos.gr/#website' },
-      about: { '@id': 'https://floropoulos.gr/#organization' },
-      primaryImageOfPage: { '@type': 'ImageObject', url: 'https://floropoulos.gr/og-image.jpg' }
+      isPartOf: { '@id': 'https://floropoulosedu.gr/#website' },
+      about: { '@id': 'https://floropoulosedu.gr/#organization' },
+      primaryImageOfPage: { '@type': 'ImageObject', url: 'https://floropoulosedu.gr/og-image.jpg' }
     }
   });
 
