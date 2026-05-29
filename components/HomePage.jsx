@@ -9,11 +9,15 @@ function HomeHero() {
   return (
     <section id="top" className="home-hero" style={{
       position: "relative",
-      paddingTop: "clamp(120px, 18vw, 220px)",
-      paddingBottom: "clamp(120px, 18vw, 220px)",
+      paddingTop: "clamp(32px, 4vw, 64px)",
+      paddingBottom: "clamp(32px, 4vw, 64px)",
       background: "var(--ink-900)",
       color: "var(--paper)",
-      overflow: "hidden"
+      overflow: "hidden",
+      minHeight: "calc(100svh - 80px)",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center"
     }}>
       {/* Full-width background image */}
       <img
@@ -46,22 +50,22 @@ function HomeHero() {
           textTransform: "uppercase",
           color: "var(--accent-soft)",
           fontWeight: 500,
-          marginBottom: "clamp(28px, 4vw, 48px)",
+          marginBottom: "clamp(20px, 2.6vw, 32px)",
           display: "inline-flex",
           alignItems: "center",
           gap: 16
         }}>
           <span style={{ width: 32, height: 1, background: "var(--accent)" }} />
-          Καλλιθέα · Από το 1985
+          Καλλιθέα · 20 χρόνια επιτυχίες
         </div>
 
         <h1 className="h-hero" style={{
-          fontSize: "clamp(44px, 7vw, 112px)",
+          fontSize: "clamp(36px, 5.4vw, 84px)",
           fontWeight: 600,
           letterSpacing: "-0.035em",
-          lineHeight: 0.98,
+          lineHeight: 1.0,
           color: "var(--paper)",
-          marginBottom: "clamp(24px, 3.5vw, 40px)",
+          marginBottom: "clamp(18px, 2.4vw, 28px)",
           maxWidth: "14ch"
         }}>
           Το φροντιστήριο{" "}
@@ -71,8 +75,8 @@ function HomeHero() {
 
         <p style={{
           fontFamily: "var(--font-sans)",
-          fontSize: "clamp(17px, 1.5vw, 20px)",
-          lineHeight: 1.65,
+          fontSize: "clamp(15px, 1.2vw, 17px)",
+          lineHeight: 1.6,
           color: "rgba(250, 247, 242, 0.82)",
           maxWidth: "52ch",
           margin: 0
@@ -85,7 +89,7 @@ function HomeHero() {
         <div style={{
           display: "flex",
           gap: 12,
-          marginTop: "clamp(32px, 5vw, 56px)",
+          marginTop: "clamp(22px, 3vw, 36px)",
           flexWrap: "wrap"
         }}>
           <a href="#/epikoinonia" className="btn home-hero-cta" style={{

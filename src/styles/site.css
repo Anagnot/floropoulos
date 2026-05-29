@@ -1,0 +1,294 @@
+/* ============================================================
+   Site-specific styles & responsive overrides
+   Built on top of tokens.css (design system)
+   ============================================================ */
+
+html { scroll-behavior: smooth; }
+html, body { overflow-x: hidden; }
+body { max-width: 100vw; }
+
+/* Section spacing — overrides for tighter rhythm than the kit default */
+section {
+  padding-top: clamp(80px, 11vw, 152px);
+  padding-bottom: clamp(80px, 11vw, 152px);
+}
+
+/* Hairlines between consecutive paper-on-paper sections.
+   Skip when the next section has its own background break (paper-2). */
+section + section:not([style*="paper-2"]) {
+  border-top: 1px solid var(--rule);
+}
+
+/* When two adjacent same-background sections sit together, the
+   border-top above handles separation. */
+
+/* ============================================================
+   Tabular numerals enforcement
+   ============================================================ */
+.field-num, .num { font-feature-settings: "tnum","lnum"; }
+
+/* ============================================================
+   Mobile nav — show/hide toggle vs links
+   ============================================================ */
+@media (max-width: 880px) {
+  .nav-desktop { display: none !important; }
+  .nav-toggle  { display: inline-flex !important; flex-shrink: 0; }
+}
+
+/* Header layout safety — wordmark shrinks, burger never shrinks */
+header > .container > a:first-child { min-width: 0; flex-shrink: 1; }
+header > .container > .nav-toggle { flex-shrink: 0; }
+
+/* On narrow screens drop the wordmark subline so the burger has room */
+@media (max-width: 880px) {
+  header [data-wordmark-sub] { display: none !important; }
+}
+
+/* ============================================================
+   Mobile responsive — collapse grids
+   ============================================================ */
+@media (max-width: 980px) {
+  /* Section heads stack */
+  .section-head { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .section-head__title,
+  .section-head__intro { grid-column: 1 / -1 !important; }
+  .section-head__intro p { margin-top: 0 !important; }
+
+  /* Intro section */
+  .intro__head,
+  .intro__body { grid-column: 1 / -1 !important; }
+  .intro__body { margin-top: 16px; }
+  .intro__body p { margin-top: 16px !important; }
+
+  /* Results section */
+  .results__head,
+  .results__body { grid-column: 1 / -1 !important; }
+  .results__body p { margin-top: 16px !important; }
+
+  /* Method 4-col → 2-col tablet */
+  .method-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 32px !important; }
+
+  /* Why 2-col stays 2-col on tablet (but narrower gap) */
+  .why-grid { gap: 32px !important; row-gap: 40px !important; }
+
+  /* Programs 3-col → 2-col */
+  .program-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 24px !important; }
+  /* The 3rd card spans 2 columns on tablet */
+  .program-grid > article:nth-child(3) { grid-column: span 2; }
+  .program-grid > article:nth-child(3) p { max-width: 65ch; }
+}
+
+@media (max-width: 720px) {
+  /* Tighter mobile section padding (handled by tokens.css too) */
+  section {
+    padding-top: clamp(64px, 14vw, 96px);
+    padding-bottom: clamp(64px, 14vw, 96px);
+  }
+
+  /* Hero overflow guard — keep word "φροντιστήριο" inside container */
+  .h-hero {
+    font-size: clamp(30px, 8.5vw, 56px) !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.03em !important;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    max-width: 100% !important;
+  }
+
+  /* Method: full stack */
+  .method-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .method-card { padding-top: 28px; }
+
+  /* Why: full stack */
+  .why-grid { grid-template-columns: 1fr !important; gap: 24px !important; row-gap: 32px !important; }
+
+  /* Programs: full stack */
+  .program-grid { grid-template-columns: 1fr !important; }
+  .program-grid > article:nth-child(3) { grid-column: span 1; }
+
+  /* Lessons: stack columns, hide vertical divider, use horizontal hairline */
+  .lesson-grid {
+    grid-template-columns: 1fr !important;
+    gap: 48px !important;
+  }
+  .lesson-divider { display: none !important; }
+  .lesson-col + .lesson-col { padding-top: 0; }
+
+  /* Extras icon column tighter */
+  .extra-row {
+    grid-template-columns: 48px 1fr !important;
+    gap: 20px !important;
+    padding-top: 36px !important;
+    padding-bottom: 36px !important;
+  }
+  .extra-row svg { width: 28px; height: 28px; }
+
+  /* Contact: stack to one column */
+  .contact-grid > .contact-info,
+  .contact-grid > .contact-form {
+    grid-column: 1 / -1 !important;
+  }
+  .contact-grid > .contact-form { margin-top: 48px; }
+
+  /* Contact heading sub-intro spacing fix */
+  #contact .container > div:first-child p {
+    margin-top: 16px !important;
+  }
+
+  /* Footer wraps */
+  .footer-row { align-items: flex-start; gap: 24px; }
+}
+
+/* ============================================================
+   Tablet refinements for contact (intermediate)
+   ============================================================ */
+@media (max-width: 980px) and (min-width: 721px) {
+  .contact-grid > .contact-info { grid-column: 1 / span 5 !important; }
+  .contact-grid > .contact-form { grid-column: 7 / span 6 !important; }
+}
+
+/* ============================================================
+   Select dropdown — paper background for options
+   ============================================================ */
+.input[type="select"], select.input { background: transparent; }
+select.input option {
+  background: var(--paper);
+  color: var(--ink-900);
+}
+
+/* ============================================================
+   Subtle focus states already handled by tokens.css
+   ============================================================ */
+
+/* Print reset — keep tidy */
+@media print {
+  .nav-mobile { display: none; }
+  header { position: static; }
+  section { page-break-inside: avoid; }
+}
+
+/* ============================================================
+   MULTI-PAGE LAYOUTS — page hero, home hero, teasers, footer
+   ============================================================ */
+
+/* Slightly bolder Manrope rendering for headings since we lost the serif */
+h1, h2, h3, h4, h5, h6,
+.h-hero, .h-1, .h-2, .h-3, .h-4 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Default smooth route transitions: each page fades in */
+main > * {
+  animation: pageFadeIn 320ms ease-out;
+}
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  main > * { animation: none; }
+}
+
+/* ---------- Page hero (subpage banner, full-width bg image) ---------- */
+.page-hero { border-top: none !important; }
+.page-hero + section { border-top: none !important; }
+.page-hero--image .eyebrow-rule::before { background: var(--accent); }
+
+/* ============================================================
+   HOME — Bold Editorial layout
+   ============================================================ */
+
+/* Hero — full-width background image with overlay */
+.home-hero { border-top: none !important; }
+.home-hero + section { border-top: none !important; }
+.home-hero-cta:hover { background: var(--accent-soft) !important; border-color: var(--accent-soft) !important; }
+.home-hero-ghost:hover { background: var(--paper) !important; color: var(--ink-900) !important; }
+
+/* Stats band — dark navy */
+.stats-band { border-top: none !important; }
+.stats-band + section { border-top: none !important; }
+
+@media (max-width: 980px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    row-gap: 40px !important;
+  }
+}
+@media (max-width: 520px) {
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    row-gap: 32px !important;
+  }
+}
+
+/* Teasers — featured + 3 minis */
+.home-teaser-featured { will-change: border-color; }
+.home-teaser-featured:hover { border-color: var(--ink-900); }
+.home-teaser-featured:hover h3 { color: var(--ink-700); }
+
+.home-teaser-mini:hover { border-color: var(--ink-900); background: var(--paper-2); }
+.home-teaser-mini:hover h3 { color: var(--ink-700); }
+
+@media (max-width: 880px) {
+  .home-teaser-featured {
+    grid-template-columns: 1fr !important;
+  }
+  .home-teaser-featured > div:first-child {
+    min-height: clamp(220px, 50vw, 320px) !important;
+  }
+}
+@media (max-width: 980px) {
+  .home-mini-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 12px !important; }
+}
+@media (max-width: 720px) {
+  .home-mini-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+}
+
+/* Results story — image + quote */
+@media (max-width: 880px) {
+  .results-story-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .results-story-grid > div:first-child {
+    aspect-ratio: 5 / 4 !important;
+    max-width: 600px;
+  }
+}
+
+/* CTA — dark dramatic */
+.home-cta-dark { border-top: none !important; }
+.home-cta-btn:hover { background: var(--accent-soft) !important; border-color: var(--accent-soft) !important; }
+
+@media (max-width: 880px) {
+  .home-cta-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .home-cta-card {
+    order: 2;
+  }
+}
+
+/* ---------- Detail page grids ---------- */
+@media (max-width: 980px) {
+  .intro-detail-head, .intro-detail-body,
+  .method-deepen-head, .method-deepen-body,
+  .programs-meta-head, .programs-meta-body {
+    grid-column: 1 / -1 !important;
+  }
+  .intro-detail-body, .method-deepen-body, .programs-meta-body { margin-top: 16px; }
+}
+
+/* ---------- Footer ---------- */
+@media (max-width: 880px) {
+  .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 36px !important; }
+}
+@media (max-width: 560px) {
+  .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+}
+
+/* Ensure images never overflow their column */
+img { max-width: 100%; height: auto; }
+
